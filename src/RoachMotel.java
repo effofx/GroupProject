@@ -1,20 +1,22 @@
 import java.util.ArrayList;
 
 public class RoachMotel  {
-    private static final int CAPACITY = 10;
+    private static final int DEFAULT_CAPACITY = 10;
     private static RoachMotel instance;
 
     private ArrayList<Room> rooms; // maybe make this final
-    private RoomFactory regularRoomFactory;
-    private RoomFactory deluxeRoomFactory;
-    private RoomFactory suiteRoomFactory;
+    private final int capacity;
+    private RoomFactory roomFactory;
+
 
     private RoachMotel(){
-        rooms = new ArrayList<>();
-        regularRoomFactory = new RegularRoomFactory();
-        deluxeRoomFactory = new DeluxeRoomFactory();
-        suiteRoomFactory = new SuiteRoomFactory();
+        this(DEFAULT_CAPACITY);
+    }
 
+    private RoachMotel(int capacity){
+        rooms = new ArrayList<>();
+        roomFactory = new RoomFactory();
+        this.capacity = capacity;
     }
 
     public static RoachMotel getInstance(){
@@ -24,6 +26,21 @@ public class RoachMotel  {
         return instance;
     }
 
+    /**
+     * This getInstance() method has a parameter incase we want to create a RoachMotel with a different capacity;
+     * @param capacity is the number of rooms the RoachMotel has.
+     * @return a RoachMotel object
+     */
+    public static RoachMotel getInstance(int capacity){
+        if(instance == null){
+            instance = new RoachMotel(capacity);
+        }
+        return instance;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
 
 }
 

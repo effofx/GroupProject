@@ -1,16 +1,28 @@
-public abstract class RoomFactory {
+public class RoomFactory {
 
     public Room addRoom(String roomType){
-        Room room;
+        Room room = null;
 
-        room = createRoom();
+        //room = createRoom();
 
         // do something
 
         return room;
     }
 
-    public abstract Room createRoom(); // getRoom
+    public Room createRoom(String roomType){
+        Room room = null;
+        if(roomType.equals("regular")){
+            room = new RegularRoom();
+        }
+        else if(roomType.equals("deluxe")){
+            room = new DeluxeRoom();
+        }
+        else if(roomType.equals("suite")){
+            room = new SuiteRoom();
+        }
+        return room;
+    }
 
 }
 
