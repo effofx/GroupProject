@@ -6,7 +6,7 @@ public class Spa extends Amenities {
 
     @Override
     public String getRoomType() {
-        return room.getRoomType() + " with a SPA";
+        return room.getRoomType() + "[SPA]";
     }
 
     @Override

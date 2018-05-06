@@ -6,7 +6,7 @@ public class AutoRefill extends Amenities {
 
     @Override
     public String getRoomType() {
-        return room.getRoomType() + " with a AUTOREFILL";
+        return room.getRoomType() + "[AUTOREFILL]";
     }
 
     @Override

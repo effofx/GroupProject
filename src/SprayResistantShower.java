@@ -6,7 +6,7 @@ public class SprayResistantShower extends Amenities {
 
     @Override
     public String getRoomType() {
-        return room.getRoomType() + " with a SPRAY RESISTANT SHOWER";
+        return room.getRoomType() + "[SPRAY RESISTANT SHOWER]";
     }
 
     @Override

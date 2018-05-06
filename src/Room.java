@@ -1,24 +1,29 @@
 public abstract class Room {
 
     private String roomType;
-    private RoachColony inhabitant;
+    private RoachColony guest;
 
     public String getRoomType(){
-        return roomType;
+        return roomType + " with a ";
     }
 
     public void setRoomType(String type){
         this.roomType = type;
     }
 
-    public RoachColony getInhabitant() {
-        return inhabitant;
+    public RoachColony getGuest() {
+        return guest;
     }
 
-    public void setInhabitant(RoachColony inhabitant) {
-        this.inhabitant = inhabitant;
+    public void setGuest(RoachColony guest) {
+        this.guest = guest;
     }
 
     public abstract double cost();
+
+    @Override
+    public String toString() {
+        return getRoomType() + " occupied by the colony: " + guest;
+    }
 }
 

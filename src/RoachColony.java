@@ -16,5 +16,10 @@ public class RoachColony {
     public void throwParty(){
 
     }
+
+    @Override
+    public String toString() {
+        return "[" + name + ", initial pop. of " + initPopulation + ", growth rate of " + growthRate+ "]";
+    }
 }
 

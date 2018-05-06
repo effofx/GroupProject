@@ -41,16 +41,22 @@ public class RoachMotel  {
         return capacity;
     }
 
-    public void checkIn(RoachColony roaches, String roomType){
+    public void checkIn(RoachColony roaches, String roomType, ArrayList<String> amenities){
         if(rooms.size() < capacity){
-            rooms.add(roomFactory.createRoom(roomType));
-            // then setup observer pattern between the Room and the RoachColony, i think.
+            Room room = roomFactory.createRoom(roomType, amenities);
+            room.setGuest(roaches);
+            rooms.add(room);
         }
         else{
             // add to waitlist
         }
     }
 
+    public void printRoomInfo(){
+        for (int i = 0; i < rooms.size(); i++) {
+            System.out.println((i+1) + ". " + rooms.get(i));
+        }
+    }
 
 }
 

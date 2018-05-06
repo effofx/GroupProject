@@ -6,7 +6,7 @@ public class FoodBar extends Amenities {
 
     @Override
     public String getRoomType() {
-        return room.getRoomType() + " with a FOOD BAR";
+        return room.getRoomType() + "[FOOD BAR]";
     }
 
     @Override
