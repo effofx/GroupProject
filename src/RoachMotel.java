@@ -5,10 +5,16 @@ public class RoachMotel  {
     private static RoachMotel instance;
 
     private ArrayList<Room> rooms; // maybe make this final
-    private RoomFactory factory;
+    private RoomFactory regularRoomFactory;
+    private RoomFactory deluxeRoomFactory;
+    private RoomFactory suiteRoomFactory;
 
     private RoachMotel(){
         rooms = new ArrayList<>();
+        regularRoomFactory = new RegularRoomFactory();
+        deluxeRoomFactory = new DeluxeRoomFactory();
+        suiteRoomFactory = new SuiteRoomFactory();
+
     }
 
     public static RoachMotel getInstance(){
