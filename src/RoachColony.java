@@ -13,13 +13,33 @@ public class RoachColony {
         this.growthRate = growthRate;
     }
 
-    public void throwParty(){
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getInitPopulation() {
+        return initPopulation;
+    }
+
+    public void setInitPopulation(int initPopulation) {
+        this.initPopulation = initPopulation;
+    }
+
+    public double getGrowthRate() {
+        return growthRate;
+    }
+
+    public void setGrowthRate(double growthRate) {
+        this.growthRate = growthRate;
     }
 
     @Override
     public String toString() {
-        return "[" + name + ", initial pop. of " + initPopulation + ", growth rate of " + growthRate+ "]";
+        return "[" + name + " | INITIAL POP. = " + initPopulation + " | G.R. = " + growthRate+ "]";
     }
 }
 

@@ -45,6 +45,7 @@ public class RoachMotel  {
         if(rooms.size() < capacity){
             Room room = roomFactory.createRoom(roomType, amenities);
             room.setGuest(roaches);
+            room.setNumOfOccupants(roaches.getInitPopulation());
             rooms.add(room);
         }
         else{
@@ -57,6 +58,18 @@ public class RoachMotel  {
         for (int i = 0; i < rooms.size(); i++) {
             System.out.println((i+1) + ". " + rooms.get(i));
         }
+    }
+
+    public Room getRoomOfRoach(RoachColony roaches){
+        Room roomOfInterest = null;
+
+        for (Room room: rooms) {
+            if(room.getGuest().equals(roaches)){
+                roomOfInterest = room;
+            }
+
+        }
+        return roomOfInterest;
     }
 
 }

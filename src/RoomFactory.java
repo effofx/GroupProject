@@ -30,7 +30,7 @@ public class RoomFactory {
 
             }
             else if(amenities.get(i).equals("shower")){
-                room = new SprayResistantShower(room);
+                room = new AntiSprayShower(room);
             }
             else{
                 System.out.println("That amenity " + amenities + " does not exist");

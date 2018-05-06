@@ -1,12 +1,12 @@
-public class SprayResistantShower extends Amenities {
+public class AntiSprayShower extends Amenities {
     private static final double COST = 25;
     private Room room;
 
-    public SprayResistantShower(Room room){ this.room = room; }
+    public AntiSprayShower(Room room){ this.room = room; }
 
     @Override
     public String getRoomType() {
-        return room.getRoomType() + "[SPRAY RESISTANT SHOWER]";
+        return room.getRoomType() + "[ANTI SPRAY SHOWER]";
     }
 
     @Override
