@@ -1,16 +1,8 @@
 public class RoomFactory {
 
-    public Room addRoom(String roomType){
-        Room room = null;
-
-        //room = createRoom();
-
-        // do something
-
-        return room;
-    }
-
     public Room createRoom(String roomType){
+        roomType = roomType.toLowerCase();
+
         Room room = null;
         if(roomType.equals("regular")){
             room = new RegularRoom();

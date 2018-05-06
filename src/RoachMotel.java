@@ -5,9 +5,8 @@ public class RoachMotel  {
     private static RoachMotel instance;
 
     private ArrayList<Room> rooms; // maybe make this final
-    private final int capacity;
     private RoomFactory roomFactory;
-
+    private final int capacity;
 
     private RoachMotel(){
         this(DEFAULT_CAPACITY);
@@ -41,6 +40,17 @@ public class RoachMotel  {
     public int getCapacity() {
         return capacity;
     }
+
+    public void checkIn(RoachColony roaches, String roomType){
+        if(rooms.size() < capacity){
+            rooms.add(roomFactory.createRoom(roomType));
+            // then setup observer pattern between the Room and the RoachColony, i think.
+        }
+        else{
+            // add to waitlist
+        }
+    }
+
 
 }
 
