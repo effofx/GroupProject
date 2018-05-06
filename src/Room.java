@@ -4,7 +4,7 @@ public abstract class Room {
     private RoachColony guest;
 
     public String getRoomType(){
-        return roomType + " with a ";
+        return roomType + " with ";
     }
 
     public void setRoomType(String type){

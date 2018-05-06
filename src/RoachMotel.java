@@ -48,6 +48,7 @@ public class RoachMotel  {
             rooms.add(room);
         }
         else{
+            System.out.println("at max cap");
             // add to waitlist
         }
     }
