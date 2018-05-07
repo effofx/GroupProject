@@ -27,16 +27,14 @@ public class RoomFactory {
             }
             else if(amenities.get(i).equals("autorefill")){
                 room = new AutoRefill(room);
-
             }
             else if(amenities.get(i).equals("shower")){
                 room = new AntiSprayShower(room);
             }
             else{
-                System.out.println("That amenity " + amenities + " does not exist");
+                System.out.println("The amenity " + amenities + " does not exist");
             }
         }
-
         return room;
     }
 

@@ -26,10 +26,16 @@ public class Main {
 
         amenitiesRequested.add("foodbar");
         motel.checkIn(roachFam3, "deluxe", amenitiesRequested);
+        amenitiesRequested.clear();
+
+        // note no amenities requested here:
         motel.checkIn(roachFam4, "suite", amenitiesRequested);
+
+        amenitiesRequested.add("spa");
         motel.checkIn(roachFam5, "regular", amenitiesRequested);
         amenitiesRequested.clear();
 
+        System.out.println("Printing Rooms:");
         motel.printRoomInfo();
 
         // throwing parties
@@ -38,9 +44,8 @@ public class Main {
         motel.getRoomOfRoach(roachFam3).throwParty();
         motel.getRoomOfRoach(roachFam4).throwParty();
 
+        System.out.println("Printing rooms after throwing party:");
         motel.printRoomInfo();
-
-
 
     }
 }

@@ -7,10 +7,11 @@ public abstract class Room {
     public abstract double cost();
 
     public Room(){
-        roomType = "none";
+        this.roomType = roomType;
         guest = new RoachColony();
         numOfOccupants = 0;
     }
+
 
     public void sprayInsecticide(){
         if(hasShower()){
@@ -32,15 +33,34 @@ public abstract class Room {
     }
 
     public boolean hasShower(){
-        String roomTypeDescription = getRoomType();
+        String roomTypeDescription = getRoomDescription();
         if(roomTypeDescription.contains("[ANTI SPRAY SHOWER]")){
             return true;
         }
         return false;
     }
 
+    public String amenitiesList(){
+        String roomDescription = getRoomDescription();
+        int indexOfFirstOccurrence = roomDescription.indexOf('[');
+
+        String amenitiesList;
+        if(indexOfFirstOccurrence == -1){
+            amenitiesList = "[NONE]";
+        }
+        else{
+            amenitiesList = roomDescription.substring(indexOfFirstOccurrence);
+        }
+
+        return amenitiesList;
+    }
+
+    public String getRoomDescription(){
+        return roomType;
+    }
+
     public String getRoomType(){
-        return roomType + " with ";
+        return roomType;
     }
 
     public void setRoomType(String type){
@@ -65,7 +85,11 @@ public abstract class Room {
 
     @Override
     public String toString() {
-        return getRoomType() + " occupied by " + guest + " and [CURRENT POP. of " + numOfOccupants + "]";
+        String row1 = String.format("%-14s: %s [NUM. OF OCCUPANTS = %s]", "Room Type", roomType, numOfOccupants);
+        String row2 = String.format("\n%-14s: %s", "Amenities", amenitiesList());
+        String row3 = String.format("\n%-14s: %s", "Occupant Info", guest);
+
+        return row1 + row2 + row3;
     }
 }
 

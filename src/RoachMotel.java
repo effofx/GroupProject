@@ -55,8 +55,11 @@ public class RoachMotel  {
     }
 
     public void printRoomInfo(){
+        System.out.println("-----------------------------------------------------------");
+
         for (int i = 0; i < rooms.size(); i++) {
-            System.out.println((i+1) + ". " + rooms.get(i));
+            System.out.println(rooms.get(i));
+            System.out.println("-----------------------------------------------------------");
         }
     }
 

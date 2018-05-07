@@ -2,11 +2,14 @@ public class Spa extends Amenities {
     private static final double COST = 20;
     private Room room;
 
-    public Spa(Room room){ this.room = room; }
+    public Spa(Room room){
+        this.setRoomType(room.getRoomType());
+        this.room = room;
+    }
 
     @Override
-    public String getRoomType() {
-        return room.getRoomType() + "[SPA]";
+    public String getRoomDescription() {
+        return room.getRoomDescription() + " [SPA]";
     }
 
     @Override

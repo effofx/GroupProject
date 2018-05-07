@@ -2,11 +2,14 @@ public class FoodBar extends Amenities {
     private static final double COST = 10;
     private Room room;
 
-    public FoodBar(Room room){ this.room = room; }
+    public FoodBar(Room room){
+        this.setRoomType(room.getRoomType());
+        this.room = room;
+    }
 
     @Override
-    public String getRoomType() {
-        return room.getRoomType() + "[FOOD BAR]";
+    public String getRoomDescription() {
+        return room.getRoomDescription() + " [FOOD BAR]";
     }
 
     @Override
