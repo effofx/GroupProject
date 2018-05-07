@@ -1,7 +1,13 @@
+/**
+ May 8, 2018
+ Purpose: Representation of a Room object
+ Input: none
+ Output: none
+ **/
+
 import java.text.NumberFormat;
 
 public abstract class Room {
-
     private String roomType;
     private RoachColony guest;
     private int numOfOccupants;
@@ -15,6 +21,9 @@ public abstract class Room {
     }
 
 
+    /**
+     *
+     */
     public void sprayInsecticide(){
         if(hasShower()){
             numOfOccupants = numOfOccupants - (int)(numOfOccupants*0.25);
@@ -36,7 +45,7 @@ public abstract class Room {
 
     public boolean hasShower(){
         String roomTypeDescription = getRoomDescription();
-        if(roomTypeDescription.contains("[ANTI SPRAY SHOWER]")){
+        if(roomTypeDescription.contains("[ANTI-SPRAY SHOWER]")){
             return true;
         }
         return false;
