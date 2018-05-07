@@ -22,7 +22,6 @@ public class RoachMotel implements Subject {
         roomFactory = new RoomFactory();
         vacant = true;
         this.capacity = capacity;
-
     }
 
     public static RoachMotel getInstance() {
@@ -53,7 +52,7 @@ public class RoachMotel implements Subject {
         return rooms.size() < capacity;
     }
 
-    public void checkIn(RoachColony roaches, String roomType, ArrayList<String> amenities) {
+    public void checkIn(RoachColony roaches, String roomType, ArrayList<Amenities> amenities) {
         if (isVacant()) {
             Room room = roomFactory.createRoom(roomType, amenities);
             room.setGuest(roaches);
@@ -66,7 +65,6 @@ public class RoachMotel implements Subject {
         }
 
         vacant = isVacant(); // updating the vacancy variable
-
     }
 
     public void checkOut(RoachColony roaches, int numOfDays) {
