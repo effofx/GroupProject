@@ -1,3 +1,15 @@
+/**
+    Sam Alhaqab
+    Arthur Brunch
+    Dan Ayasch
+    Cyril Flesch
+
+    May 8, 2018
+    Purpose: the test/demonstrator class for the entire project
+    Input: none
+    Output: none
+ **/
+
 import java.util.ArrayList;
 
 public class Main {
