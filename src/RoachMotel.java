@@ -1,26 +1,32 @@
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
-public class RoachMotel  {
+public class RoachMotel implements Subject {
     private static final int DEFAULT_CAPACITY = 10;
     private static RoachMotel instance;
+
+    private ArrayList<Observer> waitlist;
+    private boolean vacant;
 
     private ArrayList<Room> rooms; // maybe make this final
     private RoomFactory roomFactory;
     private final int capacity;
 
-    private RoachMotel(){
+    private RoachMotel() {
         this(DEFAULT_CAPACITY);
     }
 
-    private RoachMotel(int capacity){
+    private RoachMotel(int capacity) {
         rooms = new ArrayList<>();
+        waitlist = new ArrayList<>();
         roomFactory = new RoomFactory();
+        vacant = true;
         this.capacity = capacity;
+
     }
 
-    public static RoachMotel getInstance(){
-        if(instance == null){
+    public static RoachMotel getInstance() {
+        if (instance == null) {
             instance = new RoachMotel();
         }
         return instance;
@@ -28,11 +34,12 @@ public class RoachMotel  {
 
     /**
      * This getInstance() method has a parameter incase we want to create a RoachMotel with a different capacity;
+     *
      * @param capacity is the number of rooms the RoachMotel has.
      * @return a RoachMotel object
      */
-    public static RoachMotel getInstance(int capacity){
-        if(instance == null){
+    public static RoachMotel getInstance(int capacity) {
+        if (instance == null) {
             instance = new RoachMotel(capacity);
         }
         return instance;
@@ -42,23 +49,24 @@ public class RoachMotel  {
         return capacity;
     }
 
-    public boolean isVacant(){
+    public boolean isVacant() {
         return rooms.size() < capacity;
     }
 
-    public void checkIn(RoachColony roaches, String roomType, ArrayList<String> amenities){
-        if(isVacant()){
+    public void checkIn(RoachColony roaches, String roomType, ArrayList<String> amenities) {
+        if (isVacant()) {
             Room room = roomFactory.createRoom(roomType, amenities);
             room.setGuest(roaches);
             room.setNumOfOccupants(roaches.getInitPopulation());
             rooms.add(room);
-        }
-        else{
+        } else {
             // add to waitlist
+            System.out.println("added observer");
+            addObserver(roaches);
         }
     }
 
-    public void checkOut(RoachColony roaches, int numOfDays){
+    public void checkOut(RoachColony roaches, int numOfDays) {
         Room roomOfRoach = getRoomOfRoach(roaches);
         double costPerDay = roomOfRoach.cost();
         double totalCost = costPerDay * numOfDays;
@@ -73,9 +81,12 @@ public class RoachMotel  {
         System.out.println("___________________________________________________________________");
         rooms.remove(roomOfRoach);
 
+        // notify all guests on the waitlist that a room has become vacant:
+        notifyObservers();
+
     }
 
-    public void printRoomInfo(){
+    public void printRoomInfo() {
         System.out.println("-----------------------------------------------------------");
 
         for (int i = 0; i < rooms.size(); i++) {
@@ -84,15 +95,32 @@ public class RoachMotel  {
         }
     }
 
-    public Room getRoomOfRoach(RoachColony roaches){
+    public Room getRoomOfRoach(RoachColony roaches) {
         Room roomOfInterest = null;
 
-        for (Room room: rooms) {
-            if(room.getGuest().equals(roaches)){
+        for (Room room : rooms) {
+            if (room.getGuest().equals(roaches)) {
                 roomOfInterest = room;
             }
         }
         return roomOfInterest;
     }
-}
 
+    @Override
+    public void addObserver(Observer o) {
+        waitlist.add(o);
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        waitlist.remove(o);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer observer : waitlist) {
+            observer.update(vacant);
+        }
+    }
+
+}
