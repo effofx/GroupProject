@@ -59,9 +59,9 @@ public class RoachMotel implements Subject {
             room.setGuest(roaches);
             room.setNumOfOccupants(roaches.getInitPopulation());
             rooms.add(room);
-        } else {
+        }
+        else {
             // add to waitlist
-            System.out.println("added observer");
             addObserver(roaches);
         }
     }
@@ -83,6 +83,7 @@ public class RoachMotel implements Subject {
 
         // notify all guests on the waitlist that a room has become vacant:
         notifyObservers();
+        waitlist.clear();
 
     }
 
@@ -119,8 +120,7 @@ public class RoachMotel implements Subject {
     @Override
     public void notifyObservers() {
         for (Observer observer : waitlist) {
-            observer.update(vacant);
+            observer.update();
         }
     }
-
 }

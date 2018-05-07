@@ -42,9 +42,13 @@ public class RoachColony implements Observer{
         return "[" + name + "] [INITIAL POP. = " + initPopulation + "] [G.R. = " + growthRate + "]";
     }
 
+    public void display(){
+        System.out.println("We are " + name + " and we have been notified of a vacancy!");
+    }
+
     @Override
-    public void update(Object newState) {
-        System.out.println("");
+    public void update() {
+        display();
     }
 }
 
