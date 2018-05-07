@@ -2,6 +2,8 @@ import java.util.ArrayList;
 
 public class RoomFactory {
 
+    public RoomFactory(){}
+
     public Room createRoom(String roomType, ArrayList<String> amenities){
         roomType = roomType.toLowerCase();
 
@@ -37,6 +39,5 @@ public class RoomFactory {
         }
         return room;
     }
-
 }
 

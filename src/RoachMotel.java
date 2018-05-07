@@ -1,3 +1,4 @@
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class RoachMotel  {
@@ -41,17 +42,37 @@ public class RoachMotel  {
         return capacity;
     }
 
+    public boolean isVacant(){
+        return rooms.size() < capacity;
+    }
+
     public void checkIn(RoachColony roaches, String roomType, ArrayList<String> amenities){
-        if(rooms.size() < capacity){
+        if(isVacant()){
             Room room = roomFactory.createRoom(roomType, amenities);
             room.setGuest(roaches);
             room.setNumOfOccupants(roaches.getInitPopulation());
             rooms.add(room);
         }
         else{
-            System.out.println("at max cap");
             // add to waitlist
         }
+    }
+
+    public void checkOut(RoachColony roaches, int numOfDays){
+        Room roomOfRoach = getRoomOfRoach(roaches);
+        double costPerDay = roomOfRoach.cost();
+        double totalCost = costPerDay * numOfDays;
+
+        System.out.println("___________________________________________________________________");
+        System.out.println("R E C E I P T");
+        System.out.println("___________________________________________________________________");
+        System.out.println("RoachColony \"" + roaches.getName() + "\" has been checked out of the following room:\n");
+        System.out.println(roomOfRoach);
+        System.out.printf("\n%-14s: %s", "Nights stayed", numOfDays);
+        System.out.printf("\n%-14s: %s\n", "Total cost", NumberFormat.getCurrencyInstance().format(totalCost));
+        System.out.println("___________________________________________________________________");
+        rooms.remove(roomOfRoach);
+
     }
 
     public void printRoomInfo(){
@@ -70,10 +91,8 @@ public class RoachMotel  {
             if(room.getGuest().equals(roaches)){
                 roomOfInterest = room;
             }
-
         }
         return roomOfInterest;
     }
-
 }
 

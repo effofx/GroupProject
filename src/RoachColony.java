@@ -39,7 +39,7 @@ public class RoachColony {
 
     @Override
     public String toString() {
-        return "[" + name + " | INITIAL POP. = " + initPopulation + " | G.R. = " + growthRate+ "]";
+        return "[" + name + "] [INITIAL POP. = " + initPopulation + "] [G.R. = " + growthRate + "]";
     }
 }
 

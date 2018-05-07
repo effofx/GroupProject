@@ -1,3 +1,5 @@
+import java.text.NumberFormat;
+
 public abstract class Room {
 
     private String roomType;
@@ -85,11 +87,12 @@ public abstract class Room {
 
     @Override
     public String toString() {
-        String row1 = String.format("%-14s: %s [NUM. OF OCCUPANTS = %s]", "Room Type", roomType, numOfOccupants);
+        String row1 = String.format("%-14s: [%s] [NUM. OF OCCUPANTS = %s]", "Room Type", roomType, numOfOccupants);
         String row2 = String.format("\n%-14s: %s", "Amenities", amenitiesList());
         String row3 = String.format("\n%-14s: %s", "Occupant Info", guest);
+        String row4 = String.format("\n%-14s: %s per night", "Pricing", NumberFormat.getCurrencyInstance().format(cost()));
 
-        return row1 + row2 + row3;
+        return row1 + row2 + row3 + row4;
     }
 }
 
