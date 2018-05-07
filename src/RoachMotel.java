@@ -64,6 +64,9 @@ public class RoachMotel implements Subject {
             // add to waitlist
             addObserver(roaches);
         }
+
+        vacant = isVacant(); // updating the vacancy variable
+
     }
 
     public void checkOut(RoachColony roaches, int numOfDays) {
@@ -71,29 +74,15 @@ public class RoachMotel implements Subject {
         double costPerDay = roomOfRoach.cost();
         double totalCost = costPerDay * numOfDays;
 
-        System.out.println("___________________________________________________________________");
-        System.out.println("R E C E I P T");
-        System.out.println("___________________________________________________________________");
-        System.out.println("RoachColony \"" + roaches.getName() + "\" has been checked out of the following room:\n");
-        System.out.println(roomOfRoach);
-        System.out.printf("\n%-14s: %s", "Nights stayed", numOfDays);
-        System.out.printf("\n%-14s: %s\n", "Total cost", NumberFormat.getCurrencyInstance().format(totalCost));
-        System.out.println("___________________________________________________________________");
+        printInvoice(roomOfRoach, numOfDays, totalCost);
+
         rooms.remove(roomOfRoach);
 
         // notify all guests on the waitlist that a room has become vacant:
         notifyObservers();
         waitlist.clear();
 
-    }
-
-    public void printRoomInfo() {
-        System.out.println("-----------------------------------------------------------");
-
-        for (int i = 0; i < rooms.size(); i++) {
-            System.out.println(rooms.get(i));
-            System.out.println("-----------------------------------------------------------");
-        }
+        vacant = isVacant(); // updating the vacancy variable
     }
 
     public Room getRoomOfRoach(RoachColony roaches) {
@@ -105,6 +94,45 @@ public class RoachMotel implements Subject {
             }
         }
         return roomOfInterest;
+    }
+
+    public void printInvoice(Room roomOfRoach, int numOfDays, double totalCost){
+        System.out.println("_________________________________________________________________________");
+        System.out.println("I N V O I C E       I N V O I C E       I N V O I C E       I N V O I C E\n");
+
+        System.out.println("RoachColony \"" + roomOfRoach.getGuest().getName() + "\" has been checked out of the following room:\n");
+        System.out.println(roomOfRoach);
+        System.out.printf("\n%-14s: %s", "Nights stayed", numOfDays);
+        System.out.printf("\n%-14s: %s\n", "Total cost", NumberFormat.getCurrencyInstance().format(totalCost));
+        System.out.println("_________________________________________________________________________");
+    }
+
+    public void printRoomInfo() {
+        System.out.println("-------------------------------------------------------------------------");
+        System.out.println("R O O M    INFORMATION");
+        System.out.println("-------------------------------------------------------------------------");
+
+        for (Room room: rooms) {
+            System.out.println(room);
+            System.out.println("-------------------------------------------------------------------------");
+        }
+    }
+
+    public void printMotelInfo() {
+        System.out.println("-------------------------------------------------------------------------");
+        System.out.println("M O T E L    INFORMATION");
+        System.out.println("-------------------------------------------------------------------------");
+        System.out.println(this);
+        System.out.println("-------------------------------------------------------------------------");
+    }
+
+    @Override
+    public String toString() {
+        String row1 = String.format("%-14s: %s ", "Vacant", vacant);
+        String row2 = String.format("\n%-14s: %d/%d", "Capacity", rooms.size(), capacity);
+        String row3 = String.format("\n%-14s: %d", "Waitlist", waitlist.size());
+
+        return row1 + row2 + row3;
     }
 
     @Override
