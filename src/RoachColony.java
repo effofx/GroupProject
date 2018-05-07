@@ -39,11 +39,11 @@ public class RoachColony implements Observer{
 
     @Override
     public String toString() {
-        return "[" + name + "] [INITIAL POP. = " + initPopulation + "] [G.R. = " + growthRate + "]";
+        return String.format("[%s] [INITIAL POP. = %d] [G.R. = %.2f]", name, initPopulation, growthRate);
     }
 
     public void display(){
-        System.out.println("We are " + name + " and we have been notified of a vacancy!");
+        System.out.println(">>> We are " + name + " and we have been notified of a vacancy!");
     }
 
     @Override
