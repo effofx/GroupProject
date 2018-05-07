@@ -1,3 +1,10 @@
+/**
+ May 8, 2018
+ Purpose: Abstract Class for a Room object
+ Input: none
+ Output: String representation of the Room object and everything in it.
+ **/
+
 public class AutoRefill extends Amenities {
     private static final double COST = 5;
     private Room room;

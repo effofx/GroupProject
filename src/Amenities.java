@@ -1,6 +1,9 @@
 /**
- * This is the RoomDecorator class, however, it is more fitting to call it Amenities.
- */
+ May 8, 2018
+ Purpose: Amenities is the RoomDecorator class, however, "Amenities" is a more fitting name.
+ Input: none
+ Output: none
+ **/
 
 public abstract class Amenities extends Room{
     public abstract String getRoomDescription();

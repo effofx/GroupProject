@@ -98,6 +98,7 @@ public class Main {
         motel.checkOut(r2, 7);
 
         motel.printMotelInfo(); // vacancy status should be true
+        motel.printRoomInfo();
     }
 }
 
