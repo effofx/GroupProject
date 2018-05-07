@@ -1,8 +1,8 @@
 /**
  May 8, 2018
- Purpose: centralization for the creation different types of Room objects
+ Purpose: Centralization for the creation different types of Room objects
  Input: none
- Output: various types of Room objects
+ Output: Various types of Room objects
  **/
 
 import java.util.ArrayList;
@@ -23,9 +23,9 @@ public class RoomFactory {
      * @return
      */
     public Room createRoom(String roomType, ArrayList<Amenities> amenities){
-        roomType = roomType.toLowerCase();
-
+        roomType = roomType.toLowerCase(); // in the case that the user enters a string literal
         Room room = null;
+
         if(roomType.equals(REGULAR)){
             room = new RegularRoom();
         }
