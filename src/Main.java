@@ -11,6 +11,7 @@ public class Main {
         RoachColony r3 = new RoachColony("family3", 300, 6);
         RoachColony r4 = new RoachColony("family4", 400, 8);
         RoachColony r5 = new RoachColony("family5", 500, 3);
+        RoachColony r6 = new RoachColony("The Arnolds", 650, 2.5);
 
         amenitiesRequested.add("shower");
         amenitiesRequested.add("foodbar");
@@ -38,6 +39,11 @@ public class Main {
         motel.checkIn(r5, "regular", amenitiesRequested);
         amenitiesRequested.clear();
 
+        amenitiesRequested.add("foodbar");
+        amenitiesRequested.add("spa");
+        motel.checkIn(r6, "suite", amenitiesRequested);
+        amenitiesRequested.clear();
+
         System.out.println("-----------------------------------------------------");
         System.out.println("Printing Rooms:");
         motel.printRoomInfo();
@@ -54,6 +60,8 @@ public class Main {
 
         // checking out RoachColony r5
         motel.checkOut(r5, 4);
+
+
 
 
 
