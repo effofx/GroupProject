@@ -1,4 +1,4 @@
-public class RoachColony {
+public class RoachColony implements Observer{
     private String name;
     private int initPopulation;
     private double growthRate;
@@ -40,6 +40,11 @@ public class RoachColony {
     @Override
     public String toString() {
         return "[" + name + "] [INITIAL POP. = " + initPopulation + "] [G.R. = " + growthRate + "]";
+    }
+
+    @Override
+    public void update(Object newState) {
+        System.out.println("");
     }
 }
 
