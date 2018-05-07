@@ -54,6 +54,8 @@ public class Main {
         motel.checkIn(r5, "regular", amenitiesRequested);
         amenitiesRequested.clear();
 
+        motel.printMotelInfo(); // vacancy status should be full (false)
+
         // roaches r6 to r8 will be added on to the waitlist since the motel should be full
         // and we'll also assume they all want the same amenities for simplicity's sake
         amenitiesRequested.add("foodbar");
@@ -63,9 +65,6 @@ public class Main {
         motel.checkIn(r8, "suite", amenitiesRequested);
         amenitiesRequested.clear();
 
-
-        System.out.println("-----------------------------------------------------");
-        System.out.println("Printing Rooms:");
         motel.printRoomInfo();
 
         // throwing parties
@@ -93,8 +92,7 @@ public class Main {
 
         motel.checkOut(r2, 7);
 
-
-
+        motel.printMotelInfo();
     }
 }
 
