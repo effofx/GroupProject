@@ -25,7 +25,6 @@ public class RoomFactory {
             }
             else if(amenities.get(i).equals("spa")){
                 room = new Spa(room);
-
             }
             else if(amenities.get(i).equals("autorefill")){
                 room = new AutoRefill(room);
