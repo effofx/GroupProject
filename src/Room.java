@@ -20,7 +20,6 @@ public abstract class Room {
         numOfOccupants = 0;
     }
 
-
     /**
      * sprayInsecticide() is our population reducer.
      * It calculates the new number of occupants depending on if the room has a shower.
@@ -44,7 +43,7 @@ public abstract class Room {
      * then essentially lowers it by calling the sprayInsecticide() method.
      */
     public void throwParty(){
-        numOfOccupants *= guest.getGrowthRate();
+        numOfOccupants += numOfOccupants*guest.getGrowthRate();
         sprayInsecticide();
     }
 
