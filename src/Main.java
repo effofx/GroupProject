@@ -20,7 +20,7 @@ public class Main {
         ArrayList<Amenities> amenitiesRequested = new ArrayList<>(); // need to remember to clear after each checkIn()
 
         RoachColony r1 = new RoachColony("The Andersons", 100, 2);
-        RoachColony r2 = new RoachColony("The Simpsons", 200, 4);
+        RoachColony r2 = new RoachColony("The Simpsons", 200, 0.25);
         RoachColony r3 = new RoachColony("The Georges", 300, 3.14);
         RoachColony r4 = new RoachColony("The Beatles", 400, 8);
         RoachColony r5 = new RoachColony("The Hamptons", 500, 3);

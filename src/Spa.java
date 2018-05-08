@@ -1,8 +1,8 @@
 /**
  May 8, 2018
- Purpose: Abstract Class for a Room object
+ Purpose: Concrete class of the Amenities class representing a Spa
  Input: none
- Output: String representation of the Room object and everything in it.
+ Output: part of its' share of the room description and its cost
  **/
 
 public class Spa extends Amenities {
@@ -39,7 +39,15 @@ public class Spa extends Amenities {
     }
 
     @Override
-    public double cost() {
-        return COST + room.cost();
+    public double cost() { return COST + room.cost(); }
+
+    /**
+     * We wanted to use the parent Room class' toString() so we can actually just omit this method,
+     * however it is provided as per assignment instructions.
+     * @return
+     */
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

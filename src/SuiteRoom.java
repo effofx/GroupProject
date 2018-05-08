@@ -16,4 +16,14 @@ public class SuiteRoom extends Room{
     public double cost() {
         return COST;
     }
+
+    /**
+     * We wanted to use the parent Room class' toString() so we can actually just omit this method,
+     * however it is provided as per assignment instructions.
+     * @return
+     */
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

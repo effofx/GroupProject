@@ -3,7 +3,7 @@
  Purpose: Representation of the guest for the RoachMotel class.
           Half of the Observer Pattern also lives here.
  Input: name, initial population, growth rate.
- Output: none really
+ Output: none
  **/
 
 public class RoachColony implements Observer{
